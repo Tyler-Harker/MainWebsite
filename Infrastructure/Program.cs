@@ -15,6 +15,34 @@ return await Pulumi.Deployment.RunAsync(() =>
         ResourceGroupName = $"tgh-mainwebsite-{config.EnvironmentAbbreviation}"
     });
 
+    var mainWebsiteAppServicePlan = new Pulumi.AzureNative.Web.AppServicePlan($"tgh-appserviceplan-mainwebsite-{config.EnvironmentAbbreviation}", new Pulumi.AzureNative.Web.AppServicePlanArgs
+    {
+        Name = $"tgh-appserviceplan-mainwebsite-{config.EnvironmentAbbreviation}",
+        Kind = "app",
+        ResourceGroupName = resourceGroup.Name,
+        Reserved = true,
+        Sku = new Pulumi.AzureNative.Web.Inputs.SkuDescriptionArgs
+        {
+            Name = "F1",
+            Capacity = 1,
+            Size = "F1",
+            Tier = "Free"
+        }
+    });
+
+    var mainWebsiteAppService = new Pulumi.AzureNative.Web.WebApp($"tgh-mainwebsite-{config.EnvironmentAbbreviation}", new Pulumi.AzureNative.Web.WebAppArgs
+    {
+        Name = $"tgh-mainwebsite-{config.EnvironmentAbbreviation}",
+        ResourceGroupName = resourceGroup.Name,
+        ServerFarmId = mainWebsiteAppServicePlan.Id,
+        HttpsOnly = true,
+        SiteConfig = new Pulumi.AzureNative.Web.Inputs.SiteConfigArgs
+        {
+            LinuxFxVersion = "DOTNETCORE|6.0"
+        },
+    });
+
+    //var mainWebsiteAppservice = new Pulumi.AzureNative.Resources.Apps
 
     //// Create an Azure Resource Group
     ////var resourceGroup = new ResourceGroup("resourceGroup");
