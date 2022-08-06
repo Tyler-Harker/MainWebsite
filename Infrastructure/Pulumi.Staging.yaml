@@ -1,0 +1,5 @@
+config:
+  TylerHarker.MainWebsite.Infrastructure:config:
+    Environment: Staging
+    EnvironmentAbbreviation: stg
+  azure-native:location: WestUS
