@@ -10,10 +10,10 @@ return await Pulumi.Deployment.RunAsync(() =>
     var pulumiConfig = new Pulumi.Config();
     var config = pulumiConfig.RequireObject<TylerHarker.MainWebsite.Infrastructure.Configuration.Config>("config");
 
-    Console.WriteLine(config.EnvironmentAbbreviation + " this is a really long test");
-
-
-    var resourceGroup = new ResourceGroup($"tgh-mainwebsite-{config.EnvironmentAbbreviation}");
+    var resourceGroup = new ResourceGroup($"tgh-mainwebsite-{config.EnvironmentAbbreviation}", new Pulumi.AzureNative.Resources.ResourceGroupArgs
+    {
+        ResourceGroupName = $"tgh-mainwebsite-{config.EnvironmentAbbreviation}"
+    });
 
 
     //// Create an Azure Resource Group
