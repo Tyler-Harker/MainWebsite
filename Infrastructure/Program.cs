@@ -5,6 +5,13 @@ using Pulumi.AzureNative.Storage.Inputs;
 using System;
 using System.Collections.Generic;
 
+
+/**
+ * 
+ * I'm going to be running everything under 1 appservice plan to save money for my own needs.
+ * 
+ */
+
 return await Pulumi.Deployment.RunAsync(() =>
 {
     var pulumiConfig = new Pulumi.Config();
@@ -23,10 +30,10 @@ return await Pulumi.Deployment.RunAsync(() =>
         Reserved = true,
         Sku = new Pulumi.AzureNative.Web.Inputs.SkuDescriptionArgs
         {
-            Name = "F1",
+            Name = config.AppServicePlanSize,
             Capacity = 1,
-            Size = "F1",
-            Tier = "Free"
+            Size = config.AppServicePlanSize,
+            Tier = ""
         }
     });
 

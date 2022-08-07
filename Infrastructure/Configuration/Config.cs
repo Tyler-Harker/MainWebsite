@@ -10,5 +10,6 @@ namespace TylerHarker.MainWebsite.Infrastructure.Configuration
     {
         public string Environment { get; set; }
         public string EnvironmentAbbreviation { get; set; }
+        public string AppServicePlanSize { get; set; }
     }
 }

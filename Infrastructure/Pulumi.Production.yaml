@@ -1,6 +1,6 @@
 config:
   TylerHarker.MainWebsite.Infrastructure:config:
-    Environment: Staging
-    EnvironmentAbbreviation: stg
-    AppServicePlanSize: F1
+    Environment: Production
+    EnvironmentAbbreviation: prd
+    AppServicePlanSize: B1
   azure-native:location: WestUS
