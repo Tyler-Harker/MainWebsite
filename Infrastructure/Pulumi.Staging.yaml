@@ -2,5 +2,5 @@ config:
   TylerHarker.MainWebsite.Infrastructure:config:
     Environment: Staging
     EnvironmentAbbreviation: stg
-    AppServicePlanSize: F1
+    AppServicePlanSize: B1
   azure-native:location: WestUS

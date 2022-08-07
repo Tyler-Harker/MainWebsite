@@ -1,6 +1,0 @@
-config:
-  TylerHarker.MainWebsite.Infrastructure:config:
-    Environment: Production
-    EnvironmentAbbreviation: prd
-    AppServicePlanSize: B1
-  azure-native:location: WestUS
